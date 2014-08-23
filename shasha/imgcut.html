@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>图片裁剪</title>
+<style>
+#img-cut{
+	width:500px;
+	margin:50px auto;
+	padding:10px;
+	border:1px solid #CCC;
+	box-shadow:0 0 5px #CCC;
+	}
+#yangben{
+	width:500px;
+	height:500px;
+	background:#eee;
+	}
+#cut-box{
+	position:absolute;
+	top:200px;
+	left:500px;
+	width:100px;
+	height:100px;
+	border:1px dashed #000;
+	cursor:move}
+#d-box{
+	width:8px;
+	height:8px;
+	background:#333;
+	position:absolute;
+	bottom:-4px;
+	right:-4px;
+	cursor:se-resize;}
+</style>
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/lianzhui.js"></script>
+<script type="text/javascript" src="js/lianzhui_drag.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<!--[if lt IE 7]>
+<script type="text/javascript" src="js/ltIE7hack.js"></script>
+<![endif]-->
+<script>
+$(window).bind('load',function(){
+	//拖拽
+	var cut_box=$id('cut-box');
+	var yangben=$id('yangben');
+	var d1=$id('d-box');
+	drag(cut_box,yangben);
+	addEvent(d1,'mousedown',dresize);
+	function dresize(e){
+		stopPropagation(e);
+		preventDefault(e);//兼容低版本火狐
+		if(this.setCapture){//兼容ie浏览器，
+			this.setCapture();
+			}
+		//获得初始点击坐标
+		var px=e.clientX,
+		py=-e.clientY,
+		//获取裁剪盒子初始left和top值
+		boxX=getPosition(cut_box).left,
+		boxY=getPosition(cut_box).top,
+		//获取初始盒子宽高
+		bwidth=cut_box.offsetWidth,
+		bheight=cut_box.offsetHeight;
+		addEvent(this,'mousemove',dmove);
+		addEvent(this,'mouseup',moup);
+		function dmove(e){
+			//现在假设左上角坐标是（0,0）点，右下角坐标是（正方形宽，-高），
+			//点击拖动后用，鼠标移动的变化值求出移动后的坐标，然后求出此时坐标对应的45度线与（0,0）所对应45度线的距离c，新的正方形宽高就是√2*c;
+			//45度角直线是y=x+c
+			//求两平行线公式是|c1-c2|/根号下（a平方加b平方）
+			//正方形宽高就是，距离*2分之跟2
+			var x1=bwidth,y1=-bheight;
+			var fx=e.clientX,fy=-e.clientY;
+			var bianhuaX=fx-px,bianhuaY=(fy-py);
+			var x2=x1+bianhuaX,y2=y1+bianhuaY;
+			var c=y2-x2,s=Math.abs(c-0)/Math.sqrt(2);
+			var xandy=s*(Math.sqrt(2)/2);
+			cut_box.style.width=cut_box.style.height=xandy+'px';
+			}
+		function moup(){
+			removeEvent(this,'mousemove',dmove);
+				removeEvent(this,'mouseup',moup);
+				if(this.releaseCapture){//兼容ie浏览器，
+					this.releaseCapture();
+				}
+			}
+		
+		}
+
+})
+</script>
+</head>
+
+<body>
+<div id="img-cut">
+<div id="yangben">
+<div id="cut-box">
+<div id="d-box"></div>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

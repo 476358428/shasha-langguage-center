@@ -1,0 +1,374 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>老师的个人中心</title>
+<link rel="shortcot icon" href="images/favicon.ico"/>
+<link href="base.css" rel="stylesheet" type="text/css"/>
+<link href="css/teacherCenter.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/lianzhui.js"></script>
+<script type="text/javascript" src="js/lianzhui_drag.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<!--[if lt IE 7]>
+<script type="text/javascript" src="js/ltIE7hack.js"></script>
+<![endif]-->
+<script type="text/javascript" src="js/kuangjia.js"></script>
+<script type="text/javascript" src="js/teacherCenter.js"></script>
+</head>
+
+<body>
+<div id="main_box">
+  <div id="main_center_box">
+    <div id="header">
+      <div class="logo"><img src="images/logo.png" alt="莎莎 语言培训中心" /></div>
+      <div class="language_change"> <em>中文（简体）</em>
+        <div class="language_box"><a href="#">中文（简体）</a><a href="#">俄　　语</a></div>
+      </div>
+      <div class="login_user"><em class="login_user_denglu">登录</em> | <a class="login_user_zhuce" href="#">注册</a></div>
+    </div>
+    <div id="nav">
+      <ul class="yijilanmu">
+        <li class="home"><a href="#">首　　页</a></li>
+        <li class="teacher_list"><a href="#">老师目录</a>
+          <ul class="erjilanmu">
+            <li><a href="#">汉语老师</a></li>
+            <li><a href="#">俄语老师</a></li>
+          </ul>
+        </li>
+        <li class="about_us"><a href="#">关于我们</a></li>
+        <li class="news"><a href="#">新闻资讯</a></li>
+        <li class="bbs"><a href="#">论　　坛</a></li>
+        <li class="faq"><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+    <!--内容区域-->
+    <div class="content">
+      <div class="self-info-box">
+        <div class="self-info">
+          <div class="head-phto"> <img src="images/13667097651.jpg" alt="个人头像" title="个人头像"/> </div>
+          <div class="self-info-input">
+            <div class="nice-teacher"><strong  title="点击赞">(12346个赞)</strong></div>
+            <div class="bad-teacher"><strong  title="点击踩">(踩)</strong></div>
+            <div class="pay"><strong>购买</strong></div>
+            <div class="set-message"><strong>给管理员留言</strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="info-show">
+        <div class="self-info-nav">
+          <h2>个人选项</h2>
+          <ul class="self-info-put">
+            <li>发布信息</li>
+            <li>个人信息</li>
+            <li>学生评价</li>
+            <li>修改头像</li>
+            <li>修改密码</li>
+            <li>设置密码保护</li>
+            <li>修改课程价格</li>
+          </ul>
+        </div>
+        
+        <!--发布信息-->
+        <div class="fabuxinxi card">
+          <h2>发布信息</h2>
+          <div class="open-info">
+            <p class="teacher-username">老师用户名：</p>
+            <p class="info">发不得信息</p>
+            <p class="date">2014-03-14</p>
+          </div>
+          <div class="open-info">
+            <p class="teacher-username">老师用户名：</p>
+            <p class="info">发不得信息</p>
+            <p class="date">2014-03-14</p>
+          </div>
+          <div class="open-info">
+            <p class="teacher-username">老师用户名：</p>
+            <p class="info">发不得信息</p>
+            <p class="date">2014-03-14</p>
+          </div>
+          <div class="open-info">
+            <p class="teacher-username">老师用户名：</p>
+            <p class="info">发不得信息</p>
+            <p class="date">2014-03-14</p>
+          </div>
+          <form name="form1" class="form form1">
+            <textarea name="zhuangtai" class="zhuangtai" rows="3" cols="50"></textarea>
+            <p class="word_count">还可以输入<span>150</span>字</p>
+            <p class="word_over" style="display:none;">超出字数限制<span style="color:red;font-weight:bold;"></span>字 <span style="color:blue; cursor:pointer;">清理</span></p>
+            <input class="fabiao" type="button" name="fabu" value="发表" />
+          </form>
+        </div>
+        <!--个人信息-->
+        <div class="gerenxinxi card">
+          <h2>个人信息</h2>
+          <div id="gerenxinxi-box">
+            <p class="tishi">提示：因为管理员需要通过您提供的真实姓名和银行卡号，向您汇入完成给学生上课后的学费，而且只有完善了个人信息并经过管理员的审核通过后才有机会被列入老师显示列表中，所以请尽快完善您的个人信息。</p>
+            <form name="register-teacher" action="demo.php" method="post">
+              <div>
+                <label for="truename">真实姓名：</label>
+                <input id="truename" name="truename" type="text" />
+                <p style="text-align:left; color:red; float:left; text-indent:110px;">请务必填写银行卡绑定的姓名</p>
+              </div>
+              <div>
+                <label for="bank">银行账号：</label>
+                <input id="bank" name="bank" type="text" />
+              </div>
+              <div>
+                <label>性　　别：</label>
+                <label class="sex" for="men">男</label>
+                <input name="sex" id="men" type="radio" checked="checked" value="men" />
+                <label class="sex" for="female">女</label>
+                <input name="sex" id="female" type="radio" value="female" />
+              </div>
+              <div>
+                <label for="teducation_bg">学　　历：</label>
+                <select id="teducation_bg" name="education_bg">
+                  <option value="0">- - - - 请选择- - - -</option>
+                  <option value="1">- - - - 专科 - - - -</option>
+                  <option value="2">- - - - 本科 - - - -</option>
+                  <option value="3">- - - - 硕士 - - - -</option>
+                  <option value="4">- - - - 博士 - - - -</option>
+                  <option value="5">- - - - 其他 - - - -</option>
+                </select>
+                <span class="error error_bg">请选择学历！</span> </div>
+              <div>
+                <label for="teach-which">教授语言：</label>
+                <select id="teach-which" name="teach-which" >
+                  <option value="0">- - - - 请选择 - - - -</option>
+                  <option value="1">- - - - 俄语 - - - -</option>
+                  <option value="2">- - - - 中文 - - - -</option>
+                </select>
+                <span class="error error_tw">请选择教授语言！</span> </div>
+              <div>
+                <label for="tgraduate">毕业院校：</label>
+                <input id="tgraduate" name="graduate" type="text" />
+                <span class="info info_ans">请输入毕业院校，2~32 位！</span> <span class="error error_ans">输入不合法，请重新输入！</span> <span class="succ succ_ans">可用</span> </div>
+              <div>
+                <label for="tzhuce_email">电子邮件：</label>
+                <input id="tzhuce_email" name="zhuce_email" type="text" autocomplete="off" />
+                <ul class="all_email">
+                  <li><span></span>@qq.com</li>
+                  <li><span></span>@163.com</li>
+                  <li><span></span>@sohu.com</li>
+                  <li><span></span>@sina.com.cn</li>
+                  <li><span></span>@gmail.com</li>
+                  <li><span></span>@126.com</li>
+                </ul>
+                <span class="info info_email">请输入电子邮件！</span> <span class="error error_email">邮件不合法，请重新输入！</span> <span class="succ succ_email">可用</span> </div>
+              <div>
+                <label for="ttel-num">手机号码：</label>
+                <input id="ttel-num" name="tel-num" type="tel" />
+                <span class="info info_tel">请输入手机号码！</span> <span class="error error_tel">号码不合法，请重新输入！</span> <span class="succ succ_tel">可用</span> </div>
+              <div>
+                <label for="tbirthday">生　　日：</label>
+                <select style="width:80px;" id="tbirthday" name="year">
+                  <option value="0">- 年-</option>
+                </select>
+                -
+                <select style="width:80px;" name="month">
+                  <option value="0">- 月-</option>
+                </select>
+                -
+                <select style="width:80px;"  name="day">
+                  <option value="0">- 日-</option>
+                </select>
+                <span class="error error_birth">请填写出生日期！</span> </div>
+              <div style="margin-bottom:0;">
+                <label style="vertical-align:65px;" for="tbeizhu">个人简介：</label>
+                <textarea style="width:360px; height:80px;border:1px solid #ccc; resize:none;" id="tbeizhu" name="beizhu"></textarea>
+              </div>
+              <p class="word_count" style="margin:10px 0;">还能输入<span style="color:black; font-weight:bold; font-size:16px;">200</span>字</p>
+              <p class="word_over" style="display:none;margin:10px 0;">已超出<span style="color:red;font-weight:bold; font-size:16px;"></span>字　<span style="color:blue; cursor:pointer;">清理</span></p>
+              <div>
+                <input  style="background:url(images/anniu1.png) no-repeat left top; width:102px; height:42px; border:none; margin-left:190px; cursor:pointer; font:bold 18px/42px '微软雅黑'; color:#fff;" type="button" name="sub" value="确认修改"/>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!--学生评价-->
+        <div class="xueshengpingjia card">
+          <h2>学生评价</h2>
+          <div class="stu-comment">
+            <p class="student-username">学生用户名：</p>
+            <p class="info">学生的评论</p>
+            <p class="date">2014-03-14</p>
+          </div>
+          <form name="form2" class="form form2">
+            <textarea name="zhuangtai" class="zhuangtai" rows="3" cols="50"></textarea>
+            <p class="word_count">还可以输入<span>200</span>字</p>
+            <p class="word_over" style="display:none;">超出字数限制<span style="color:red;font-weight:bold;"></span>字 <span style="color:blue; cursor:pointer;">清理</span></p>
+            <input class="fabiao" type="button" name="fabu" value="发表" />
+          </form>
+        </div>
+        <!--修改头像-->
+        <div class="xiugaitouxiang card">
+          <iframe name="iframe1" style="display:none;" frameborder="0" scrolling="no"></iframe>
+          <h2>修改头像</h2>
+          <div id="head-photo-see"><img id="himage1" src="images/default.jpg"/></div>
+          <form class="photo-send" name="photo-send" action="demo.php" target="iframe1" method="post" enctype="multipart/form-data">
+            <div class="xiugai-input" style="position:relative;">
+              <input name="selected-photo" id="selected-photo" type="file"/>
+              <input class="" type="button" value="选择头像"/>
+              <p> 请尽量选择比例为1:1的图片，图片大小不能超过2M。 </p>
+            </div>
+            <div class="xiugai-input">
+              <input type="button" id="touxiangfasong" value="保存" />
+              <input type="button" id="fasongquxiao" value="取消" />
+            </div>
+          </form>
+        </div>
+        <!--修改密码-->
+        <div class="xiugaimima card">
+          <h2>修改密码</h2>
+          <form name="xiugaimimaform" class="xiugaimimaform" >
+            <div>
+              <label for="yuashimima">当前密码：</label>
+              <input id="yuashimima" name="yuashimima" type="password" value=""/>
+            </div>
+            <div>
+              <label for="gaihoumima">新密码：</label>
+              <input id="gaihoumima" name="gaihoumima" type="password" value=""/>
+              <span class="info info_pass">
+              <p>安全级别：<strong class="anquan anquan1">■</strong><strong class="anquan anquan2">■</strong><strong class="anquan anquan3">■</strong></strong><strong class="anquan anquan4" style="font-weight:normal;"></strong></p>
+              <p><strong class="quan1" style="font-weight:normal;">○</strong> 6-20 个字符</p>
+              <p><strong class="quan2" style="font-weight:normal;">○</strong> 只能包含大小写字母、数字和非空格字符</p>
+              <p><strong class="quan3" style="font-weight:normal;">○</strong> 大、小写字母、数字、非空字符，2种以上</p>
+              </span> <span class="error error_pass">输入不合法，请重新输入！</span> <span class="succ succ_pass">可用</span> </div>
+            <div>
+              <label for="querengaihoumima">确认新密码：</label>
+              <input id="querengaihoumima" name="querengaihoumima" type="password" value=""/>
+              <span class="info info_sure">请再一次输入密码！</span> <span class="error error_sure">密码不一致，请重新输入！</span> <span class="succ succ_sure">可用</span> </div>
+            <div class="queren-box">
+              <input type="button" name="xiugaitijiao" class="xiugaitijiao" value="确认修改"/>
+            </div>
+          </form>
+          <div class="xiugai_wait"></div>
+        </div>
+        <!--设置密码保护-->
+        <div class="mimabaohubox card">
+          <h2>设置密码保护</h2>
+          <div class="mibao-box">
+            <p>设置密码保护可以用于找回密码，密保只能设置一次，请牢记所填问题和答案。</p>
+            <form name="mimabaohu" class="mimabaohu" action="" method="post">
+              <div class="que">
+                <label for="que">密保问题：</label>
+                <select name="que" id="que">
+                  <option value="0">- - - 请选择问题 - - -</option>
+                </select>
+                <span></span> </div>
+              <div class="daan">
+                <label for="daan">密保答案：</label>
+                <input name="daan" id="daan" type="text" value="" />
+                <span></span> </div>
+              <div class="mibaoqueren">
+                <input type="button" name="tijiaomibao" class="tijiaomibao" value="提交密保" />
+              </div>
+            </form>
+          </div>
+        </div>
+        <!--修改课程价格-->
+        <div class="xiugaijiage card">
+          <h2>修改课程价格</h2>
+          <div class="kechengjiage">
+            <p>说明：此价格为每小时收费价格</p>
+            <form name="kechengjiage" action="" method="post">
+              <p class="yuanjiage"> 当前价格：&nbsp;&nbsp;<span>120</span>
+              </p>
+              <div class="xiugaihou">
+                <label for="xiugaikechengjiage">修改价格：</label>
+                <input id="xiugaikechengjiage"
+          name="kechengjiage" type="text" value="" />&nbsp;&nbsp;
+                <select style="color:#666;" class="danwei">
+                  <option value="元">元</option>
+                  <option value="卢布">卢布</option>
+                </select>
+              </div>
+              <div class="kechengtijiao">
+                <input type="button" name="tijiao" value="提交" />
+              </div>
+            </form>
+          </div>
+        </div>
+        <div style="clear:both"></div>
+      </div>
+      <!--他人访问信息展示-->
+      <div class="visit-info">
+        <div class="gerenjiajie">
+          <h2>老师个人简介</h2>
+          <p>姓名： </p>
+          <p>性别： </p>
+          <p>出生日期： </p>
+          <p>莎莎教龄： </p>
+          <p>教授语言： </p>
+          <p>毕业学校： </p>
+          <p>个人简介： 个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介个人简介</p>
+          <p>课程价格： </p>
+        </div>
+        <div class="fabuxinxi card">
+          <h2>发布的信息</h2>
+          <div class="open-info">
+            <p class="teacher-username">老师用户名：</p>
+            <p class="info">发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息发不得信息</p>
+            <p class="date">2014-03-14</p>
+          </div>
+          <div class="open-info">
+            <p class="teacher-username">老师用户名：</p>
+            <p class="info">发不得信息</p>
+            <p class="date">2014-03-14</p>
+          </div>
+          <div class="open-info">
+            <p class="teacher-username">老师用户名：</p>
+            <p class="info">发不得信息</p>
+            <p class="date">2014-03-14</p>
+          </div>
+          <div class="open-info">
+            <p class="teacher-username">老师用户名：</p>
+            <p class="info">发不得信息</p>
+            <p class="date">2014-03-14</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <p><a href="#">友情帮助</a> | <a href="#">意见反馈</a> | <a href="#">开放平台</a> | <a href="#">网站地图</a><br />
+        <a href="#">合作伙伴</a> | <a href="#">诚招英才</a> | <a href="#">法律声明</a><br />
+        版权所有@莎莎语言培训 | <a href="#">团队简介</a> | <a href="#">总台管理</a> </p>
+    </div>
+  </div>
+</div>
+
+<!--主体外布局-->
+<div class="liuyan-box">
+  <h1 id="tuodong">用户留言<img src="images/close.png" alt="关闭" title="关闭" width="14" height="14" /></h1>
+  <form name="liuyan" class="liuyan">
+    <p class="from_"><span>form：</span>用户</p>
+  <p class="to_"><span>to：</span>管理员</p>
+    <textarea name="liuyanneirong" class="liuyanneirong" rows="3" cols="50"></textarea>
+    <p class="word_count">还可以输入<span>150</span>字</p>
+    <p class="word_over" style="display:none;">超出字数限制<span style="color:red;font-weight:bold;"></span>字 <span style="color:blue; cursor:pointer;">清理</span></p>
+    <input class="fasong" type="button" name="fasong" value="发送" />
+  </form>
+</div>
+<div class="login_box">
+  <h1 id="tuodong">用户登录<img src="images/close.png" alt="关闭" title="关闭" width="14" height="14" /></h1>
+  <form name="login" action="" method="post">
+    <div>
+      <label for="login_user">用 户 名：</label>
+      <input class="login_text" id="login_user" name="login_user" type="text" />
+    </div>
+    <div>
+      <label for="login_pass">密　　码：</label>
+      <input class="login_text" id="login_pass" name="login_pass" type="password" />
+    </div>
+    <div>
+      <input class="login_butt" name="sub" type="button" />
+      <p><a href="#">忘记密码</a> | <a href="#">免费注册</a></p>
+    </div>
+    <div class="login_wait"></div>
+  </form>
+</div>
+<div id="screen"></div>
+<div id="back_top">返回顶部</div>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>找回密码</title>
+<link href="base.css" rel="stylesheet" />
+<link href="css/passPro.css" rel="stylesheet" />
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/lianzhui.js"></script>
+<script type="text/javascript" src="js/lianzhui_drag.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<!--[if lt IE 7]>
+<script type="text/javascript" src="js/ltIE7hack.js"></script>
+<![endif]-->
+<script type="text/javascript" src="js/kuangjia.js"></script>
+<script>
+addEvent(window,"load",function(){
+	//修改密码
+	$('.xiugaimimaform .xiugaitijiao').hover(function(){
+			$(this).css('background','url(images/anniu2.png) no-repeat left top');
+		},function(){
+			$(this).css('background','url(images/anniu1.png) no-repeat left top');
+		});		
+		
+	//密码验证
+
+	$("form").getForm('xiugaimimaform').form("gaihoumima").bind("focus",function(){
+		$(".xiugaimimaform .info_pass").show();
+		$(".xiugaimimaform .succ_pass").hide();
+		$(".xiugaimimaform .error_pass").hide();
+	}).bind("blur",function(){
+		if($("form").getForm('xiugaimimaform').form("gaihoumima").value()==""){
+			$(".xiugaimimaform .info_pass").hide();
+			$(".xiugaimimaform .succ_pass").hide();
+			$(".xiugaimimaform .error_pass").hide();
+		}else if(checkUp()){
+			$(".xiugaimimaform .info_pass").hide();
+			$(".xiugaimimaform .succ_pass").show();
+			$(".xiugaimimaform .error_pass").hide();
+		}else{
+			$(".xiugaimimaform .info_pass").hide();
+			$(".xiugaimimaform .succ_pass").hide();
+			$(".xiugaimimaform .error_pass").show();
+			}
+		
+			
+				});
+				
+	function checkUp(){
+		var value=$("form").getForm('xiugaimimaform').form("gaihoumima").value();
+		var length=value.length;
+		var code_length=0;
+		//6-20 个字符
+		if(length>=6&&length<=20){
+			$(".xiugaimimaform .quan1").html("●").css("color","green")
+		}else{
+			$(".xiugaimimaform .quan1").html("○").css("color","#666")
+		}
+		//只能包含大小写字母、数字和非空格字符
+		if(length>0&&!/\s/.test(value)){
+			$(".xiugaimimaform .quan2").html("●").css("color","green")
+		}else{
+			$(".xiugaimimaform .quan2").html("○").css("color","#666")	
+				}
+		// 大、小写字母、数字、非空字符，2种以上
+		if(/[\d]/.test(value)){
+			code_length++
+			}	
+		if(/[a-z]/.test(value)){
+			code_length++
+			}
+		if(/[A-Z]/.test(value)){
+			code_length++
+			}
+		if(/[^0-9a-zA-Z]/.test(value)){
+			code_length++
+			}
+		if(code_length>=2){
+			$(".xiugaimimaform .quan3").html("●").css("color","green")
+		}else{
+			$(".xiugaimimaform .quan3").html("○").css("color","#666")	
+				}	
+		//安全级别
+		if(code_length>=3&&length>=10){
+			$(".xiugaimimaform .anquan1").css("color","green");
+			$(".xiugaimimaform .anquan2").css("color","green");
+			$(".xiugaimimaform .anquan3").css("color","green");
+			$(".xiugaimimaform .anquan4").html("高").css("color","green");
+		}else if(code_length>=2&&length>=8){
+			$(".xiugaimimaform .anquan1").css("color","#f60");
+			$(".xiugaimimaform .anquan2").css("color","#f60");
+			$(".xiugaimimaform .anquan3").css("color","#ccc");
+			$(".xiugaimimaform .anquan4").html("中").css("color","#f60");
+		}else if(length>=1){
+			$(".xiugaimimaform .anquan1").css("color","maroon");
+			$(".xiugaimimaform .anquan2").css("color","#ccc");
+			$(".xiugaimimaform .anquan3").css("color","#ccc");
+			$(".xiugaimimaform .anquan4").html("低").css("color","maroon");
+		}else{
+			$(".xiugaimimaform .anquan1").css("color","#ccc");
+			$(".xiugaimimaform .anquan2").css("color","#ccc");
+			$(".xiugaimimaform .anquan3").css("color","#ccc");
+			$(".xiugaimimaform .anquan4").html("").css("color","#ccc");		
+			}
+			if(length>=6&&length<=20&&!/\s/.test(value)&&code_length>=2){
+			return true;
+			}
+			return false;
+		}
+	$("form").getForm('xiugaimimaform').form("gaihoumima").bind("keyup",checkUp);	
+			
+	//确认密码
+	
+	$("form").getForm('xiugaimimaform').form("querengaihoumima").bind("focus",function(){
+		$(".xiugaimimaform .info_sure").show();
+		$(".xiugaimimaform .succ_sure").hide();
+		$(".xiugaimimaform .error_sure").hide();
+		}).bind("blur",function(){
+			if($("form").getForm('xiugaimimaform').form("querengaihoumima").value()==""){
+				$(".xiugaimimaform .info_sure").hide();
+				}else if($("form").getForm('xiugaimimaform').form("querengaihoumima").value()==$("form").getForm('xiugaimimaform').form("gaihoumima").value()){
+				$(".xiugaimimaform .info_sure").hide();
+				$(".xiugaimimaform .succ_sure").show();
+				$(".xiugaimimaform .error_sure").hide();
+			}else{
+				$(".xiugaimimaform .info_sure").hide();
+				$(".xiugaimimaform .succ_sure").hide();
+				$(".xiugaimimaform .error_sure").show();
+				}
+			});		
+	//确认修改
+	$(".xiugaimimaform .xiugaitijiao").click(function(){
+		var flag=true;
+		if(!checkUp()){
+			flag=false;
+			$(".xiugaimimaform .error_pass").show()
+			}
+		if($("form").getForm('xiugaimimaform').form("querengaihoumima").value()!=$("form").getForm('xiugaimimaform').form("gaihoumima").value()){
+			flag=false;
+			$(".xiugaimimaform .error_sure").show();
+			}
+		if(flag){
+			document.forms.xiugaimimaform.submit();
+			removeEvent(this,'click',arguments.callee)
+		}
+		
+		});	
+	});
+</script>
+</head>
+
+<body>
+<div id="main_box">
+  <div id="main_center_box">
+    <div id="header">
+      <div class="logo"><img src="images/logo.png" alt="莎莎 语言培训中心" /></div>
+      <div class="language_change"> <em>中文（简体）</em>
+        <div class="language_box"><a href="#">中文（简体）</a><a href="#">俄　　语</a></div>
+      </div>
+      <div class="login_user"><em class="login_user_denglu">登录</em> | <a class="login_user_zhuce" href="#">注册</a></div>
+    </div>
+    <div id="nav">
+      <ul class="yijilanmu">
+        <li class="home"><a href="#">首　　页</a>
+        <li class="training"><a href="#">语言培训</a>
+          <ul class="erjilanmu">
+            <li><a href="#">汉语培训</a></li>
+            <li><a href="#">俄语培训</a></li>
+          </ul>
+        </li>
+        <li class="teacher_list"><a href="#">老师目录</a>
+          <ul class="erjilanmu">
+            <li><a href="#">汉语老师</a></li>
+            <li><a href="#">俄语老师</a></li>
+          </ul>
+        </li>
+        <li class="about_us"><a href="#">关于我们</a></li>
+        <li class="news"><a href="#">新闻资讯</a></li>
+        <li class="bbs"><a href="#">论　　坛</a></li>
+        <li class="faq"><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+    <!--内容区域-->
+    <div class="content">
+      <div class="xiugaimima">
+          <h2>修改密码</h2>
+          <form name="xiugaimimaform" class="xiugaimimaform" >
+            <div>
+              <label for="gaihoumima">新密码：</label>
+              <input id="gaihoumima" name="gaihoumima" type="password" value=""/>
+              <span class="info info_pass">
+              <p>安全级别：<strong class="anquan anquan1">■</strong><strong class="anquan anquan2">■</strong><strong class="anquan anquan3">■</strong></strong><strong class="anquan anquan4" style="font-weight:normal;"></strong></p>
+              <p><strong class="quan1" style="font-weight:normal;">○</strong> 6-20 个字符</p>
+              <p><strong class="quan2" style="font-weight:normal;">○</strong> 只能包含大小写字母、数字和非空格字符</p>
+              <p><strong class="quan3" style="font-weight:normal;">○</strong> 大、小写字母、数字、非空字符，2种以上</p>
+              </span> <span class="error error_pass">输入不合法，请重新输入！</span> <span class="succ succ_pass">可用</span> </div>
+            <div>
+              <label for="querengaihoumima">确认新密码：</label>
+              <input id="querengaihoumima" name="querengaihoumima" type="password" value=""/>
+              <span class="info info_sure">请再一次输入密码！</span>
+<span class="error error_sure">密码不一致，请重新输入！</span>
+<span class="succ succ_sure">可用</span>
+            </div>
+            <div class="queren-box">
+              <input type="button" name="xiugaitijiao" class="xiugaitijiao" value="确认修改"/>
+            </div>
+          </form>
+          <div class="xiugai_wait"></div>
+        </div>
+    </div>
+    <div id="footer">
+      <p><a href="#">友情帮助</a> | <a href="#">意见反馈</a> | <a href="#">开放平台</a> | <a href="#">网站地图</a><br />
+        <a href="#">合作伙伴</a> | <a href="#">诚招英才</a> | <a href="#">法律声明</a><br />
+        版权所有@莎莎语言培训 | <a href="#">团队简介</a> | <a href="#">总台管理</a> </p>
+    </div>
+  </div>
+</div>
+
+<!--主体外布局-->
+<div class="login_box">
+  <h1 id="tuodong">用户登录<img src="images/close.png" alt="关闭" title="关闭" width="14" height="14" /></h1>
+  <form name="login" action="" method="post">
+    <div>
+      <label for="login_user">用 户 名：</label>
+      <input class="login_text" id="login_user" name="login_user" type="text" />
+    </div>
+    <div>
+      <label for="login_pass">密　　码：</label>
+      <input class="login_text" id="login_pass" name="login_pass" type="password" />
+    </div>
+    <div>
+      <input class="login_butt" name="sub" type="button" />
+      <p><a href="#">忘记密码</a> | <a href="#">免费注册</a></p>
+    </div>
+    <div class="login_wait"></div>
+  </form>
+</div>
+<div id="screen"></div>
+<div id="back_top">返回顶部</div>
+</body>
+</html>

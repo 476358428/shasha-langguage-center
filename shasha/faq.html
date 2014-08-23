@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>莎莎语言培训中心-常见问题</title>
+<link href="base.css" rel="stylesheet" />
+<link href="css/faq.css" rel="stylesheet" />
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/lianzhui.js"></script>
+<script type="text/javascript" src="js/lianzhui_drag.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+<!--[if lt IE 7]>
+<script type="text/javascript" src="js/ltIE7hack.js"></script>
+<![endif]-->
+<script type="text/javascript" src="js/kuangjia.js"></script>
+<script>
+addEvent(window,"load",function(){
+	$('.faq-box').opacityChange({target:100,type:1,t:50,speed:20});
+	
+//position为fixed的元素offsetParent是body，而ie的offsetparent是null，所以用getPosition（）获取偏移值时有误，所以我们采用两个广告相互切换
+	var box_h=getPosition($('.ding').elements[0]).top;
+	fn();
+	$(window).bind('resize',function(){
+		setInterval(fn,100);
+		})
+	$(window).bind('scroll',fn)
+	function fn(){
+		var h=document.documentElement.scrollTop||document.body.scrollTop;
+		var l=getPosition($('.ding').elements[0]).left;
+		if(box_h<h){
+			
+			
+			$('.dong').css('left',getPosition($('.ding').elements[0]).left+'px').show();
+			if(h+$('.dong').elements[0].offsetHeight>document.documentElement.scrollHeight-$('#footer').elements[0].offsetHeight){
+			$('.dong').hide();
+			}
+			
+			}else{
+				$('.dong').hide();
+				
+				}
+				
+}
+});
+</script>
+</head>
+
+<body id="faq">
+<div id="main_box">
+  <div id="main_center_box">
+    <div id="header">
+      <div class="logo"><img src="images/logo.png" alt="莎莎 语言培训中心" /></div>
+      <div class="language_change"> <em>中文（简体）</em>
+        <div class="language_box"><a href="#">中文（简体）</a><a href="#">俄　　语</a></div>
+      </div>
+      <div class="login_user"><em class="login_user_denglu">登录</em> | <a class="login_user_zhuce" href="#">注册</a></div>
+    </div>
+    <div id="nav">
+      <ul class="yijilanmu">
+        <li class="home"><a href="#">首　　页</a>
+        <li class="training"><a href="#">语言培训</a>
+          <ul class="erjilanmu">
+            <li><a href="#">汉语培训</a></li>
+            <li><a href="#">俄语培训</a></li>
+          </ul>
+        </li>
+        <li class="teacher_list"><a href="#">老师目录</a>
+          <ul class="erjilanmu">
+            <li><a href="#">汉语老师</a></li>
+            <li><a href="#">俄语老师</a></li>
+          </ul>
+        </li>
+        <li class="about_us"><a href="#">关于我们</a></li>
+        <li class="news"><a href="#">新闻资讯</a></li>
+        <li class="bbs"><a href="#">论　　坛</a></li>
+        <li class="faq"><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+    <!--内容区域-->
+    <div class="content">
+    <!--广告-->
+    <div class="xuanfyguanggao ding"><a href="#"><img src="images/13667097651.jpg"/></a></div>
+    
+    <div class="xuanfyguanggao dong"><a href="#"><img src="images/13667097651.jpg"/></a></div>
+    <ul class="faq-box">
+    <h2 class="faqh2">常见问题</h2>
+    <li class="que-an">
+    <h2 class="que">
+   问题一：
+    </h2>
+    <p class="an">
+    很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 
+    </p>
+    </li>
+      <li class="que-an">
+    <h2 class="que">
+   问题一：
+    </h2>
+    <p class="an">
+    很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 
+    </p>
+    </li>
+      <li class="que-an">
+    <h2 class="que">
+   问题一：
+    </h2>
+    <p class="an">
+    很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 
+    </p>
+    </li>
+      <li class="que-an">
+    <h2 class="que">
+   问题一：
+    </h2>
+    <p class="an">
+    很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 
+    </p>
+    </li>
+      <li class="que-an">
+    <h2 class="que">
+   问题一：
+    </h2>
+    <p class="an">
+    很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 很多话 
+    </p>
+    </li>
+    </ul>
+    </div>
+    <div id="footer">
+      <p><a href="#">友情帮助</a> | <a href="mailto:263693587@qq.com">意见反馈</a> | <a href="#">开放平台</a> | <a href="#">网站地图</a><br />
+        <a href="#">合作伙伴</a> | <a href="#">诚招英才</a> | <a href="#">法律声明</a><br />
+        版权所有@莎莎语言培训 | <a href="#">团队简介</a> | <a href="#">总台管理</a> </p>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--主体外布局-->
+<div class="login_box">
+  <h1 id="tuodong">用户登录<img src="images/close.png" alt="关闭" title="关闭" width="14" height="14" /></h1>
+  <form name="login" action="" method="post">
+    <div>
+      <label for="login_user">用 户 名：</label>
+      <input class="login_text" id="login_user" name="login_user" type="text" />
+    </div>
+    <div>
+      <label for="login_pass">密　　码：</label>
+      <input class="login_text" id="login_pass" name="login_pass" type="password" />
+    </div>
+    <div>
+      <input class="login_butt" name="sub" type="button" />
+      <p><a href="#">忘记密码</a> | <a href="#">免费注册</a></p>
+    </div>
+    <div class="login_wait"></div>
+  </form>
+</div>
+<div id="screen"></div>
+<div id="back_top">返回顶部</div>
+</body>
+</html>
